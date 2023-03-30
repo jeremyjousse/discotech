@@ -12,6 +12,7 @@
     "lint": {
       "outputs": []
     },
-    "test": {}
+    "test": {},
+    "storybook": {}
   }
 }
