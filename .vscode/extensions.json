@@ -1,0 +1,13 @@
+{
+  "recommendations": [
+    "alexkrechik.cucumberautocomplete",
+    "davidanson.vscode-markdownlint",
+    "eamodio.gitlens",
+    "esbenp.prettier-vscode",
+    "formulahendry.auto-rename-tag",
+    "ritwickdey.liveserver",
+    "sonarsource.sonarlint-vscode",
+    "vivaxy.vscode-conventional-commits"
+  ],
+  "unwantedRecommendations": []
+}

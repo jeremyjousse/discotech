@@ -5,11 +5,14 @@ Only available for [MacOS](https://www.apple.com/macos/) and [Apple Music](https
 
 ## Dependencies
 
-In order to help music file identification this app queries [Discogs](https://www.discogs.com/) and [Beatport](https://www.beatport.com/).
+In order to help music file identification this app queries [Discogs](https://www.discogs.com/) and
+[Beatport](https://www.beatport.com/).
 
 ## Dev
 
-This repository uses [Fast Node Manager](https://github.com/Schniz/fnm), [PnPM](https://pnpm.io/fr/), [TURBO](https://turbo.build/), [NestJs](https://nestjs.com/), [React](https://fr.reactjs.org/).
+This repository uses [Fast Node Manager](https://github.com/Schniz/fnm), [PnPM](https://pnpm.io/fr/),
+[TURBO](https://turbo.build/), [NestJs](https://nestjs.com/), [React](https://fr.reactjs.org/),
+[Husky](https://github.com/typicode/husky).
 
 ### Contribute
 
@@ -19,11 +22,7 @@ Use `pnpm run dev` to start [frontend](apps/frontend/) and [api](apps/api/) in d
 
 Add following components
 
-- [ ] SonarCloud
-- [ ] Husky
-- [ ] Eslint
-- [ ] Prettier
-- [ ] VS Code settings
+- [ ] Semantic release
 - [ ] [Nest Clean Architecture](https://github.com/royib/clean-architecture-nestJS)
 
 ### Bootstrap
