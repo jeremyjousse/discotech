@@ -19,7 +19,6 @@ Use `pnpm run dev` to start [frontend](apps/frontend/) and [api](apps/api/) in d
 
 Add following components
 
-- [ ] SonarCloud
 - [ ] Husky
 - [ ] Eslint
 - [ ] Prettier
