@@ -1,0 +1,87 @@
+name: My Test Monorepo Project
+on:
+  push:
+      branches:
+      - main
+      paths:
+      - 'apps/**'
+      - 'packages/shared-domain/**'
+  pull_request:
+    types: [opened, synchronize, reopened]
+jobs:
+  sonarcloudScanAPI:
+    name: sonarcloudScanAPI
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0  
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
+          SONAR_TOKEN: ${{ secrets.SONAR_API_TOKEN }}
+        with:
+          projectBaseDir: apps/api
+          args: -Dsonar.projectKey=jeremyjousse_discotech_api
+            -Dsonar.organization=jeremyjousse
+            -Dsonar.host.url=https://sonarcloud.io
+            -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info
+            -Dsonar.sources=src
+            -Dsonar.exclusions=**/__tests__/**
+            -Dsonar.tests=src/__tests__
+            -Dsonar.test.inclusions=**/__tests__/**
+            -Dsonar.pullrequest.branch=${{ github.event.pull_request.head.ref }}
+            -Dsonar.pullrequest.key=${{ github.event.pull_request.number }}
+            -Dsonar.scm.revision=${{ github.event.pull_request.head.ref }}
+  sonarcloudScanFrontend:
+    name: sonarcloudScanFrontend
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0  
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
+          SONAR_TOKEN: ${{ secrets.SONAR_FRONTEND_TOKEN }}
+        with:
+          projectBaseDir: apps/frontend
+          args: -Dsonar.projectKey=jeremyjousse_discotech_frontend
+            -Dsonar.organization=jeremyjousse
+            -Dsonar.host.url=https://sonarcloud.io
+            -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info
+            -Dsonar.sources=src
+            -Dsonar.exclusions=**/__tests__/**
+            -Dsonar.tests=src/__tests__
+            -Dsonar.test.inclusions=**/__tests__/**
+            -Dsonar.pullrequest.branch=${{ github.event.pull_request.head.ref }}
+            -Dsonar.pullrequest.key=${{ github.event.pull_request.number }}
+            -Dsonar.scm.revision=${{ github.event.pull_request.head.ref }}
+  sonarcloudScanSharedDomain:
+    name: sonarcloudScanSharedDomain
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0  
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
+          SONAR_TOKEN: ${{ secrets.SONAR_SHARED_DOMAIN_TOKEN }}
+        with:
+          projectBaseDir: packages/shared-domain
+          args: -Dsonar.projectKey=jeremyjousse_discotech_shared_domain
+            -Dsonar.organization=jeremyjousse
+            -Dsonar.host.url=https://sonarcloud.io
+            -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info
+            -Dsonar.sources=src
+            -Dsonar.exclusions=**/__tests__/**
+            -Dsonar.tests=src/__tests__
+            -Dsonar.test.inclusions=**/__tests__/**
+            -Dsonar.pullrequest.branch=${{ github.event.pull_request.head.ref }}
+            -Dsonar.pullrequest.key=${{ github.event.pull_request.number }}
+            -Dsonar.scm.revision=${{ github.event.pull_request.head.ref }}
+          
