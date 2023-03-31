@@ -19,13 +19,13 @@ Use `pnpm run dev` to start [frontend](apps/frontend/) and [api](apps/api/) in d
 
 Add following components
 
-- [ ] Tailwind
 - [ ] Storybook
 - [ ] SonarCloud
 - [ ] Husky
 - [ ] Eslint
 - [ ] Prettier
 - [ ] VS Code settings
+- [ ] [Nest Clean Architecture](https://github.com/royib/clean-architecture-nestJS)
 
 ### Bootstrap
 
@@ -38,7 +38,10 @@ pnpm init
 pnpm dlx create-turbo@latest
 rm -Rf apps/*
 cd apps
-pnpm create react-app frontend --template typescript
 npm i -g @nestjs/cli
 nest new api --package-manager=pnpm
+npm create vite@latest frontend
+cd frontend 
+pnpx sb@next init 
+pnpm add -D tailwindcss
 ```
