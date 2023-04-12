@@ -23,7 +23,8 @@ Use `pnpm run dev` to start [frontend](apps/frontend/) and [api](apps/api/) in d
 Add following components
 
 - [ ] Semantic release
-- [ ] [Nest Clean Architecture](https://github.com/royib/clean-architecture-nestJS)
+- [ ] Nest Clean Architecture [1](https://github.com/royib/clean-architecture-nestJS) [2](https://github.com/jonathanPretre/clean-architecture-nestjs/tree/master/server)
+- [ ] [Export Music library](https://community.roonlabs.com/t/applescript-to-export-music-app-xml-nightly/102750)
 
 ### Bootstrap
 

@@ -1,0 +1,28 @@
+---
+version: "3.6"
+services:
+  # postgres:
+  #   image: "postgres:11"
+  #   environment:
+  #     POSTGRES_USER: postgres
+  #     POSTGRES_PASSWORD: postgres
+  #     POSTGRES_DB: discotech
+  #   ports:
+  #     - 5432:5432
+  #   volumes:
+  #     - discotech-postgres:/var/lib/postgresql/data
+  mongodb:
+    image : mongo:6.0.5
+    environment:
+      PUID: 1000
+      PGID: 1000
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_DATABASE: mongo
+      MONGO_INITDB_ROOT_PASSWORD: mongo
+    ports:
+      - 27017:27017
+    volumes:
+      - discotech-mongodb:/data/db
+      # - .docker/mongodb/database:/data/db
+volumes:
+  discotech-mongodb:

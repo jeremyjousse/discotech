@@ -1,7 +1,8 @@
 {
     "conventionalCommits.scopes": [
-        "frontend",
-        "global"
+      "frontend",
+      "global",
+      "api"
     ],
     "editor.formatOnSave": true,
     "json.format.enable": true,
@@ -22,5 +23,16 @@
     },
     "[javascript]": {
       "editor.defaultFormatter": "esbenp.prettier-vscode"
-    }
+    },
+    "cSpell.words": [
+      "Breakbeat",
+      "Francaise",
+      "Manouche",
+      "Melo",
+      "Morna",
+      "Rocksteady",
+      "Soca",
+      "Variete",
+      "Zook"
+    ]
 }
