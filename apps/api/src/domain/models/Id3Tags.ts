@@ -1,17 +1,17 @@
 import { Id3Genre } from './Id3Genres';
 
 export type Id3Tags = {
-  album: string;
+  album: string | null;
   artist: string;
-  comments: string;
-  dateReleased: Date; // ??
-  genre: Id3Genre;
-  picture: string;
-  publisher: string;
-  rating: number;
-  rekordboxed: boolean;
+  comments: string | null;
+  dateReleased: Date | null; // ??
+  genre: Id3Genre | null;
+  picture: string | null;
+  publisher: string | null;
+  rating: number | null;
+  rekordboxed: boolean | null;
   title: string;
-  toMix: boolean;
-  trackCount: number;
-  trackNumber: number;
+  toMix: boolean | null;
+  trackCount: number | null;
+  trackNumber: number | null;
 };

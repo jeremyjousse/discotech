@@ -13,8 +13,9 @@ module.exports = async () => {
     testEnvironment: 'node',
     modulePaths: ['<rootDir>'],
     testMatch: [
-      '**/__tests__/**/*.[jt]s?(x)',
-      '**/?(*.)+(spec|test).[jt]s?(x)',
+      '**/__tests__/**/?(*.)+(spec|test).[jt]s?(x)',
+      // '**/?(*.)+(spec|test).[jt]s?(x)',
     ],
+    setupFiles: ['<rootDir>/src/__tests__/dotenv-config.ts'],
   };
 };

@@ -9,13 +9,11 @@ import { NestLogger } from 'src/adapters/out/nestLogger/NestLogger.service';
 export class UpdateLibraryUseCase
   implements ICommandHandler<UpdateLibraryCommand>
 {
-  private readonly logger: NestLogger;
-
   constructor(
     private readonly libraryService: AppleMusicLibraryService,
     private readonly trackRepository: MongoTrackRepositoryService,
+    private readonly logger: NestLogger,
   ) {
-    this.logger = new NestLogger();
     this.logger.setContext('UpdateLibraryUseCase');
   }
 

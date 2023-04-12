@@ -13,6 +13,9 @@ import {
   TrackSchema,
 } from 'src/adapters/out/mongoDb/schemas/Track.schema';
 import { getModelToken } from '@nestjs/mongoose';
+import { NestLogger } from 'src/adapters/out/nestLogger/NestLogger.service';
+import { ConfigModule, ConfigService } from '@nestjs/config';
+import configuration from 'src/adapters/in/config/configuration';
 
 describe('UpdateLibraryUseCase', () => {
   let app: INestApplication;
@@ -24,6 +27,8 @@ describe('UpdateLibraryUseCase', () => {
   let mongod: MongoMemoryServer;
   let mongoConnection: Connection;
   let trackModel: Model<Track>;
+  let configService: ConfigService;
+  let logger: NestLogger;
 
   beforeAll(async () => {
     mongod = await MongoMemoryServer.create();
@@ -31,12 +36,28 @@ describe('UpdateLibraryUseCase', () => {
     mongoConnection = (await connect(uri)).connection;
     trackModel = mongoConnection.model(Track.name, TrackSchema);
 
+    const mockLogger = {
+      axiosRef: {
+        request: jest.fn(),
+        post: jest.fn(),
+      },
+    };
+
     const moduleFixture: TestingModule = await Test.createTestingModule({
-      imports: [],
+      imports: [
+        ConfigModule.forRoot({
+          load: [configuration],
+        }),
+      ],
       providers: [
         AppleMusicLibraryService,
         AppleMusicLibraryXmlReaderService,
         AppleScriptService,
+        NestLogger,
+        {
+          provide: NestLogger,
+          useValue: mockLogger,
+        },
         { provide: getModelToken(Track.name), useValue: trackModel },
       ],
     }).compile();
@@ -55,6 +76,10 @@ describe('UpdateLibraryUseCase', () => {
       appleMusicLibraryXmlReaderService,
     );
 
+    configService = moduleFixture.get<ConfigService>(ConfigService);
+    // configService = new ConfigService();
+    logger = new NestLogger(configService);
+
     app = moduleFixture.createNestApplication();
     await app.init();
   });
@@ -63,6 +88,7 @@ describe('UpdateLibraryUseCase', () => {
     updateLibraryUseCase = new UpdateLibraryUseCase(
       libraryService,
       trackRepository,
+      logger,
     );
   });
 

@@ -11,11 +11,16 @@ import { LibraryService } from './adapters/in/rest/library/library.service';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 import { NestLoggerModule } from './adapters/out/nestLogger/NestLogger.module';
+import { ConfigModule } from '@nestjs/config';
+import configuration from './adapters/in/config/configuration';
 export const CommandHandlers = [UpdateLibraryUseCase];
 
 @Module({
   imports: [
     AppleMusicModule,
+    ConfigModule.forRoot({
+      load: [configuration],
+    }),
     CqrsModule,
     DatabaseModule,
     NestLoggerModule,

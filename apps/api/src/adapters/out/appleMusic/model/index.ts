@@ -1,3 +1,4 @@
-import { AppleMusicTrack, AppleMusicTracks } from './AppleMusicTrack';
+import { AppleMusicRating } from './AppleMusicRating';
+import { AppleMusicTrack, AppleMusicTracks } from './AppleMusicTrack.type';
 
-export { AppleMusicTrack, AppleMusicTracks };
+export { AppleMusicRating, AppleMusicTrack, AppleMusicTracks };
