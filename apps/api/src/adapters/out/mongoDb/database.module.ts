@@ -1,9 +1,11 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
-import { Track, TrackSchema } from './schemas/Track.schema';
+import { MongooseTrack, TrackSchema } from './schemas/Track.schema';
 import { MongoTrackRepositoryService } from './MongoTrackRepository.service';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongoMemoryServer } from 'mongodb-memory-server';
+import { NestLoggerModule } from '../nestLogger/NestLogger.module';
+import { TrackMapper } from './track.mapper';
 
 @Module({
   imports: [
@@ -30,7 +32,10 @@ import { MongoMemoryServer } from 'mongodb-memory-server';
             };
           },
         }),
-    MongooseModule.forFeature([{ name: Track.name, schema: TrackSchema }]),
+    MongooseModule.forFeature([
+      { name: MongooseTrack.name, schema: TrackSchema },
+    ]),
+    NestLoggerModule,
   ],
   providers: [MongoTrackRepositoryService],
   exports: [MongoTrackRepositoryService],

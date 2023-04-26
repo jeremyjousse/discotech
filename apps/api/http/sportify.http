@@ -1,0 +1,31 @@
+@artist = The Beach Boys
+@title = Dance, Dance, Dance
+@client_id = {{$dotenv SPOTIFY_CLIENT_ID}}
+@client_secret = {{$dotenv SPOTIFY_CLIENT_SECRET}}
+
+###
+# @name requestToken
+
+POST https://accounts.spotify.com/api/token
+Authorization: Basic {{client_id}}:{{client_secret}}
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=client_credentials
+
+###
+
+@authToken = {{requestToken.response.body.access_token}}
+
+###
+# @name searchTrack
+GET https://api.spotify.com/v1/search?q=artist%3A{{artist}}+track%3A{{title}}&type=track&market=FR
+Authorization: Bearer {{authToken}}
+
+###
+
+@trackId = {{searchTrack.response.body.tracks.items[0].id}}
+
+###
+# @name getRecommendations
+GET https://api.spotify.com/v1/recommendations?market=FR&seed_tracks={{trackId}}
+Authorization: Bearer {{authToken}}

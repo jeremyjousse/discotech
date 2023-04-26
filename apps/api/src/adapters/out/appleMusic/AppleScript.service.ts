@@ -11,6 +11,8 @@ export class AppleScriptService {
    * @returns Promise<Void>
    */
   public updateMusicLibraryXmlFile = (): Promise<void> => {
+    // TODO check if export folder exists
+    // Or sanitize check at app boot
     return run((libraryPath) => {
       const music = Application('Music');
       music.playlists[0].export({

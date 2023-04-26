@@ -1,5 +1,4 @@
-import { Track } from 'src/adapters/out/mongoDb/schemas/Track.schema';
-import { LibraryTrack } from 'src/domain/models/Track';
+import { LibraryTrack, Track } from 'src/domain/models/Track';
 
 export interface TrackRepository {
   create(libraryTrack: LibraryTrack): Promise<LibraryTrack>;

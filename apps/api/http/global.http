@@ -1,1 +1,7 @@
+###
+
 PUT http://localhost:4000/library
+
+###
+
+GET http://localhost:4000/library?filters[title]=Tronic&filters[artist]=Mirko&page=1&page_size=20&sort=title:desc

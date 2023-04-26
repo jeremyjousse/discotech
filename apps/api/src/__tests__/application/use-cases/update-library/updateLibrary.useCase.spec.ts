@@ -3,7 +3,7 @@ import { INestApplication } from '@nestjs/common';
 import { AppleScriptService } from 'src/adapters/out/appleMusic/AppleScript.service';
 import { AppleMusicLibraryXmlReaderService } from 'src/adapters/out/appleMusic/AppleMusicLibraryXmlReader.service';
 import { join } from 'path';
-import { UpdateLibraryUseCase } from 'src/use-cases/update-library/updateLibrary.useCase';
+import { UpdateLibraryUseCase } from 'src/application/use-cases/update-library/updateLibrary.useCase';
 import { AppleMusicLibraryService } from 'src/adapters/out/appleMusic/AppleMusicLibrary.service';
 import { MongoTrackRepositoryService } from 'src/adapters/out/mongoDb/MongoTrackRepository.service';
 import { MongoMemoryServer } from 'mongodb-memory-server';

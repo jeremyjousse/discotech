@@ -3,16 +3,17 @@ import { PingController } from './ping/ping.controller';
 import { PingService } from './ping/ping.service';
 import { LibraryController } from './adapters/in/rest/library/library.controller';
 import { CqrsModule } from '@nestjs/cqrs';
-import { UpdateLibraryUseCase } from './use-cases/update-library/updateLibrary.useCase';
+import { UpdateLibraryUseCase } from './application/use-cases/update-library/updateLibrary.useCase';
 import { DatabaseModule } from './adapters/out/mongoDb/database.module';
 import { AppleMusicModule } from './adapters/out/appleMusic/AppleMusic.module';
-import { UpdateLibraryUseCaseModule } from './use-cases/update-library/UpdateLibrary.module';
+import { UpdateLibraryUseCaseModule } from './application/use-cases/update-library/UpdateLibrary.module';
 import { LibraryService } from './adapters/in/rest/library/library.service';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 import { NestLoggerModule } from './adapters/out/nestLogger/NestLogger.module';
 import { ConfigModule } from '@nestjs/config';
 import configuration from './adapters/in/config/configuration';
+import { LibraryFileListingUseCaseModule } from './application/use-cases/library-file-listing/LibraryFileListing.module';
 export const CommandHandlers = [UpdateLibraryUseCase];
 
 @Module({
@@ -27,6 +28,7 @@ export const CommandHandlers = [UpdateLibraryUseCase];
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '..', 'static'),
     }),
+    LibraryFileListingUseCaseModule,
     UpdateLibraryUseCaseModule,
   ],
   controllers: [PingController, LibraryController],

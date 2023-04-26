@@ -2,10 +2,10 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { HydratedDocument } from 'mongoose';
 import { Id3Genre } from 'src/domain/models/Id3Genres';
 
-export type TrackDocument = HydratedDocument<Track>;
+export type TrackDocument = HydratedDocument<MongooseTrack>;
 
-@Schema()
-export class Track {
+@Schema({ collection: 'tracks' })
+export class MongooseTrack {
   @Prop()
   album: string;
 
@@ -58,4 +58,4 @@ export class Track {
   title: string;
 }
 
-export const TrackSchema = SchemaFactory.createForClass(Track);
+export const TrackSchema = SchemaFactory.createForClass(MongooseTrack);
